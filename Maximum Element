@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int N;
+    int i = 0;
+    int j;
+    long number;
+    long result = 0;
+    scanf("%d\n",&N);
+    scanf("%ld",&number);
+    while( i < N ){
+        i = i + 1;
+        int ar[N];
+        if(number==1){
+            N=N+1;
+            scanf("%ld\n",&number);
+            ar[i]=number;
+        }
+        if(number==2){
+            i = i - 1;
+            scanf("%ld\n",&number);
+        }
+        if(number==3){
+            for( j = 0; j < N; j = j + 1 ){
+                if(result<ar[i]) result=ar[i];
+            }
+            printf("%ld\n",result);
+            scanf("%ld\n",&number);
+        }
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
