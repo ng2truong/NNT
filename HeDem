@@ -1,0 +1,158 @@
+#include <stdio.h>
+#include <math.h>
+void HeDem2(double Num2);
+void HeDem8(double Num8);
+void HeDem16(double Num16);
+void main(){
+	int SoHeDem;
+	double N;
+	printf("Nhap He Dem [2]/[8]/[16] hay [0](Tat ca): ");
+	scanf("%d", &SoHeDem);
+	printf("Nhap so N: ");
+	scanf("%lf", &N);
+	switch(SoHeDem)
+	{
+		case 2: printf("He Dem BIN: ");
+				HeDem2(N);
+				break;
+				
+		case 8: printf("He Dem OCT: ");
+				HeDem8(N);
+				break;
+		
+		case 16:printf("He Dem HEX: "); 
+				HeDem16(N);
+				break;
+		
+		case 0: printf("He Dem BIN: ");
+				HeDem2(N);
+				printf("\n");
+				printf("He Dem OCT: ");
+				HeDem8(N);
+				printf("\n");
+				printf("He Dem HEX: ");
+				HeDem16(N);
+				break;
+	}
+getch();
+}
+void HeDem2(double Num2){
+	int S[32];
+	int a;
+	int i = 0;
+	int VT = floor(Num2);
+	if(VT!=0){
+		while(VT!=0){
+			a = VT%2;
+			S[i] = a;
+			i += 1;
+			VT /= 2;
+		}
+	}
+	else{
+		printf("%d",VT);
+	}
+	int k;
+	for(k = i - 1 ; k >= 0 ; k -= 1)
+		printf("%d",S[k]);
+	printf(".");
+	int T[32];
+	int b;
+	int j = 0;
+	double VP = Num2 - floor(Num2);
+	if(VP!=0){
+		while(VP!=0){
+			VP = VP*2;
+			b = floor(VP);
+			T[j] = b;
+			printf("%d",T[j]);
+			VP -= b;
+			j += 1;
+		}
+	}
+	else{
+		printf("%d",VP);
+	}
+}
+void HeDem8(double Num8){
+	int S[32];
+	int a;
+	int i = 0;
+	int VT = floor(Num8);
+	if(VT!=0){
+		while(VT!=0){
+		a = VT%8;
+		S[i] = a;
+		i = i + 1;
+		VT /= 8;
+		}
+	}
+	else{
+		printf("%d",VT);
+	}	
+	int k;
+	for(k = i - 1 ; k >= 0 ; k -= 1)
+		printf("%d",S[k]);
+	printf(".");
+	int T[32];
+	int b;
+	int j = 0;
+	double VP = Num8 - floor(Num8);
+	if(VP!=0){
+		while(VP!=0){
+			VP *= 8;
+			b = floor(VP);
+			T[j] = b;
+			printf("%d",T[j]);
+			VP -= b;
+			j += 1;
+		}
+	}
+	else{
+		printf("%d",VP);
+	}
+}
+void HeDem16(double Num16){
+	int S[32];
+	int a;
+	int i = 0;
+	int VT = floor(Num16);
+	if(VT!=0){
+		while(VT!=0){
+		a = VT%16;
+		S[i] = a;
+		i += 1;
+		VT /= 16;
+		}
+	}
+	else{
+		printf("%d",VT);
+	}	
+	int k;
+	for(k = i - 1 ; k >= 0 ; k -= 1){
+		if(S[k]<10)	
+			printf("%d",S[k]);
+		else
+			printf("%c",S[k]+55);
+	}
+	printf(".");
+	int T[32];
+	int b;
+	int j = 0;
+	double VP = Num16 - floor(Num16);
+	if(VP!=0){
+		while(VP!=0){
+			VP *= 16;
+			b = floor(VP);
+			T[j] = b;
+			if(T[j]<10)
+				printf("%d",T[j]);
+			else
+				printf("%c",T[j]+55);
+			VP -= b;
+			j += 1;
+		}
+	}
+	else
+		printf("%d",VP);	
+}
