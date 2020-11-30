@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+	int i = 0, j = 0, N, type, value, max;
+	scanf("%d",&N);
+	int *p, *q;
+	p = (int*)malloc(N*sizeof(int));
+	for(; i < N; i++){
+		scanf("%d",&type);
+		switch(type){
+			case 1: scanf("%d",&value);
+				*p = value;
+				if(j == 0)
+					max = *p;
+				else
+					max = ((max >= *p) ? max : *p);
+				p++;
+				j++;
+				break;
+			case 2: p--;
+				j--;
+				q = p;
+				q--;
+				if(j == 0)
+					max = 0;
+				if(j == 1)
+					max = *q;
+				if(j > 1){
+					max = 0;
+					int k;
+					for(k = j - 1; k >= 0; k--, q--)
+						max = ((max >= *q) ? max : *q);
+				}
+				break;
+			case 3: printf("%d\n",max);
+				break;
+		}
+	}
+	getch();
+	free(p);
+}
