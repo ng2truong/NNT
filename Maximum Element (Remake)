@@ -36,6 +36,6 @@ int main(){
 				break;
 		}
 	}
-	getch();
-	free(p);
+	int getch();
+	return 0;
 }
